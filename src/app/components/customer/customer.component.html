@@ -1,0 +1,46 @@
+<form [formGroup]="awesomeForm" (ngSubmit)="onSubmit()">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <span>First name</span>
+                    <input class="form-control" [ngClass]="{'is-invalid': awesomeForm.get('lastName').hasError('minlength')
+                        || awesomeForm.get('lastName').hasError('maxlength')}"
+                        formControlName="firstName" type="text" placeholder="Enter your first name">
+
+                    <div class="invalid-feedback" *ngIf="awesomeForm.get('firstName').hasError('minlength')
+                    || awesomeForm.get('firstName').hasError('maxlength')">
+                        This field in invalid
+                    </div>
+                </div>
+                <div class="form-group">
+                    <span>Last name</span>
+                    <input type="text" formControlName="lastName" class="form-control" [ngClass]="{'is-invalid': awesomeForm.get('lastName').hasError('minlength')
+                        || awesomeForm.get('lastName').hasError('maxlength')}"
+                        placeholder="Enter your last name">
+                    <div class="invalid-feedback" *ngIf="awesomeForm.get('lastName').hasError('minlength')
+                    || awesomeForm.get('lastName').hasError('maxlength')">
+                        This field in invalid
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="form-group">
+                    <span>Email</span>
+                    <input type="email" [ngClass]="{'is-invalid': awesomeForm.get('email').hasError('email')}"
+                        formControlName="email" class="form-control" placeholder="example@email.com">
+                    <div class="invalid-feedback" *ngIf="awesomeForm.get('email').hasError('email')">
+                        This emial is invalid
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </div>
+</form>
